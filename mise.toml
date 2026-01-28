@@ -1,0 +1,20 @@
+[tools]
+"npm:markdownlint-cli" = "0.47.0"
+"pipx:commitizen" = "4.10.0"
+"pipx:jupyterlab" = "4.5.1"
+pre-commit = "4.3.0"
+
+# Working with Python
+# python = "3.12.9"
+# uv = "0.9.21"
+# black = "25.12.0"
+
+[settings]
+python.uv_venv_auto = true
+
+[tasks.setup]
+description = "Install `uv` virtual environment & a kernel for Jupyterlab"
+run = """
+  uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=wow-analytics
+  pre-commit install
+  """
